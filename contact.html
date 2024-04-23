@@ -3,11 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/contact.css">
     <title>Contacto</title>
 </head>
 <body>
     <!--Header para todas las pages-->
-    <div class="header"></div>
+    <div class="header">
+        <p>Header</p>
+    </div>
 
     <!--Formulario de contacto-->
     <article class="main-img">
@@ -23,45 +26,69 @@
             <form action="">
                 <h3>Datos personales</h3>
                 <br>
-                <label for="nombre">Nombre/s</label><br>
-                <input type="text" name="nombre" id="nombre" required><br>
-                <label for="apellido">Apellido</label><br>
-                <input type="text" name="apellido" id="apellido" required><br>
-                <label for="f-nac">Fecha de Nacimiento</label><br>
-                <input type="date" name="f-nac" id="f-nac" required><br>
-                <label for="genero">Género</label><br>
-                <input type="radio" id="masc" name="genero" value="maculino">
-                <label for="Masculino">Masculino</label><br>
-                <input type="radio" id="fem" name="genero" value="femenino">
-                <label for="Femenino">Femenino</label><br>
-                <input type="radio" id="otro" name="genero" value="Otro">
-                <label for="Otro">Otro</label>
-
-                <hr>
-                <h3>Contacto</h3>
-                <br>
-                <label for="email">Email</label><br>
-                <input type="email" name="mail" id="mail" required><br>
-                <label for="email">Confirmar Email</label><br>
-                <input type="email" name="conf-mail" id="conf-mail" required><br>
-                <label for="tel">Telefono</label><br>
-                <input type="tel" name="tel" id="telefono" required><br>
-                <label for="provincia">Provincia</label><br>   
-                <select name="provincia" id="provincia" required>
-                    <option value="buenos-aires">Buenos Aires</option>
-                    <option value="caba">CABA</option>
-                    <option value="cordoba">Cordoba</option>
-                    <option value="santa-fe">Santa Fe</option>
-                    <option value="entre-rios">Entre Rios</option>
-                </select><br>
-                <label for="direccion">Direccion</label><br>
-                <input type="text" name="direccion" id="direccion" required><br>
-                <hr>
-                <input type="checkbox" name="term" id="term" required>
-                <label for="term">He leido y acepto los <a href="#">Terminos y Condiciones</a></label><br>
-                <input type="checkbox" name="contact-chkbx" id="contact-chkbx" required>
-                <label for="contact-chkbx">Estoy de acuerdo con un representante se comunique conmigo a través de los medios declarados en el fomulario</label><br>
-                <input type="submit" value="Enviar">
+                <div class="form-inputs-grid">
+                    <div class="nombre-grid">
+                        <label for="nombre">Nombre/s</label><br>
+                        <input type="text" name="nombre" id="nombre" required>
+                    </div> 
+                    <div class="apellido-grid">   
+                        <label for="apellido">Apellido</label><br>
+                        <input type="text" name="apellido" id="apellido" required>
+                    </div>
+                    <div class="nacimiento-grid">
+                        <label for="f-nac">Fecha de Nacimiento</label><br>
+                        <input type="date" name="f-nac" id="f-nac" required>
+                    </div>
+                    <div class="genero-grid">    
+                        <label for="genero">Género</label><br>
+                        <div class="genero-flex">
+                            <input type="radio" id="masc" name="genero" value="maculino">
+                            <label for="Masculino">Masculino</label><br>
+                            <input type="radio" id="fem" name="genero" value="femenino">
+                            <label for="Femenino">Femenino</label><br>
+                            <input type="radio" id="otro" name="genero" value="Otro">
+                            <label for="Otro">Otro</label>
+                        </div>
+                    </div>
+                    <div class="contacto-grid">
+                        <h3>Contacto</h3>
+                    </div>
+                    <div class="email-grid">
+                        <label for="email">Email</label><br>
+                        <input type="email" name="mail" id="mail" required>
+                    </div>
+                    <div class="conf-email-grid">
+                        <label for="email">Confirmar Email</label><br>
+                        <input type="email" name="conf-email" id="conf-email" required>
+                    </div>
+                    <div class="tel-grid">
+                        <label for="tel">Telefono</label><br>
+                        <input type="tel" name="tel" id="telefono" required>
+                    </div>
+                    <div class="provincia-grid">
+                        <label for="provincia">Provincia</label><br>   
+                        <select name="provincia" id="provincia" required>
+                            <option value="buenos-aires">Buenos Aires</option>
+                            <option value="caba">CABA</option>
+                            <option value="cordoba">Cordoba</option>
+                            <option value="santa-fe">Santa Fe</option>
+                            <option value="entre-rios">Entre Rios</option>
+                        </select>
+                    </div>
+                    <div class="direccion-grid">
+                        <label for="direccion">Direccion</label><br>
+                        <input type="text" name="direccion" id="direccion" required>
+                    </div>
+                    <div class="terminos-grid">
+                        <input type="checkbox" name="term" id="term" required>
+                        <label for="term">He leido y acepto los <a href="#">Terminos y Condiciones</a></label><br>
+                        <input type="checkbox" name="contact-chkbx" id="contact-chkbx" required>
+                        <label for="contact-chkbx">Estoy de acuerdo con que un representante se comunique conmigo a través de los medios declarados en el fomulario</label>
+                    </div>
+                    <div class="boton-grid">
+                        <input type="submit" value="Enviar">
+                    </div>
+                </div>
             </form>
         </div>
     </article>
