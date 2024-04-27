@@ -16,11 +16,23 @@
 
     
     <!-- Sección con la lista de productos -->
-    <main class="producto-lista">
-        <div>
+    <section class="producto-lista">
+        <h2>Listado de productos</h2>
 
+        <div class="ordenar-productos">
+            <label for="ordenar-por">Ordenar por:</label>
+            <select id="ordenar-por">
+                <option value="nombre">Nombre</option>
+                <option value="precio-asc">Precio (ascendente)</option>
+                <option value="precio-desc">Precio (descendente)</option>
+            </select>
         </div>
-    </main>
+
+        <div class="tarjetas">
+            </div>
+    </section>
+
+    <script src="script.js"></script>
 
 
     <!--Footer para todas las pages-->
