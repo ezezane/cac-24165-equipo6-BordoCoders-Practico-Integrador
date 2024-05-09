@@ -4,16 +4,91 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/contact.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
     <title>Contacto</title>
+
+    <script
+      src="https://kit.fontawesome.com/7d4193cf05.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    >
 </head>
 <body>
     <!--Header para todas las pages-->
-    <div class="header">
-        <p>Header</p>
-    </div>
+        <!-- carousel -->
+        <div class="carousel">
+          <div
+            id="carouselExampleControls"
+            class="carousel slide"
+            data-bs-ride="carousel"
+          >
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <h2 class="titulo">Envíos gratis desde de $20000</h2>
+              </div>
+              <div class="carousel-item">
+                <h2 class="titulo">compra en 3 y 6 cuotas sin interes</h2>
+              </div>
+              <div class="carousel-item">
+                <h2 class="titulo">suscribite para ofertas ilimitadas</h2>
+              </div>
+            </div>
+            <button
+              class="carousel-control-prev"
+              type="button"
+              data-bs-target="#carouselExampleControls"
+              data-bs-slide="prev"
+            >
+              <span aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button
+              class="carousel-control-next"
+              type="button"
+              data-bs-target="#carouselExampleControls"
+              data-bs-slide="next"
+            >
+              <span aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        </div>
+    
+        <!-- logo y título -->
+        <section class="menu">
+          <div class="menu-titulo">
+            <img src="img/logo-black.png" alt="Logo de la página"/>
+            <h1>Borbo Perfumería</h1>
+          </div>
+        </section>
+    
+        <!-- header -->
+        <header class="m-0 menu">
+          <div class="menu__caja d-flex justify-content-center">
+            <ul>
+              <li>
+                <a href="index.html">Inicio</a>
+              </li>
+              <li>
+                <a href="#">Productos</a>
+              </li>
+              <li class="menu__item">
+                <a href="#">Contacto</a>
+              </li>
+            </ul>
+          </div>
+        </header>
 
     <!--Formulario de contacto-->
-    <article class="main-img">
+    <main class="main-img">
         <div class="form">
             <div class="title">
                 <h2>¡Suma nuestros perfumes a tu emprendimiento!</h2>
@@ -22,8 +97,8 @@
                 <p>Llena el formulario y convertite en revendedor</p>
             </div>
 
-            <!--Seccion de datos personales-->
             <form action="">
+                <!--Seccion de datos personales-->
                 <h3>Datos personales</h3>
                 <br>
                 <div class="form-inputs-grid">
@@ -40,30 +115,32 @@
                         <input type="date" name="f-nac" id="f-nac" required>
                     </div>
                     <div class="genero-grid">    
-                        <label for="genero">Género</label><br>
+                        <label>Género</label><br>
                         <div class="genero-flex">
                             <input type="radio" id="masc" name="genero" value="maculino">
-                            <label for="Masculino">Masculino</label><br>
+                            <label for="masc">Masculino</label><br>
                             <input type="radio" id="fem" name="genero" value="femenino">
-                            <label for="Femenino">Femenino</label><br>
+                            <label for="fem">Femenino</label><br>
                             <input type="radio" id="otro" name="genero" value="Otro">
-                            <label for="Otro">Otro</label>
+                            <label for="otro">Otro</label>
                         </div>
                     </div>
+
+                    <!--Seccion Contacto-->
                     <div class="contacto-grid">
                         <h3>Contacto</h3>
                     </div>
                     <div class="email-grid">
-                        <label for="email">Email</label><br>
+                        <label for="mail">Email</label><br>
                         <input type="email" name="mail" id="mail" required>
                     </div>
                     <div class="conf-email-grid">
-                        <label for="email">Confirmar Email</label><br>
+                        <label for="conf-email">Confirmar Email</label><br>
                         <input type="email" name="conf-email" id="conf-email" required>
                     </div>
                     <div class="tel-grid">
                         <label for="tel">Telefono</label><br>
-                        <input type="tel" name="tel" id="telefono" required>
+                        <input type="tel" name="tel" id="tel" pattern="[0-9]{10}" required>
                     </div>
                     <div class="provincia-grid">
                         <label for="provincia">Provincia</label><br>   
@@ -83,14 +160,56 @@
                         <input type="checkbox" name="term" id="term" required>
                         <label for="term">He leido y acepto los <a href="#">Terminos y Condiciones</a></label><br>
                         <input type="checkbox" name="contact-chkbx" id="contact-chkbx" required>
-                        <label for="contact-chkbx">Estoy de acuerdo con que un representante se comunique conmigo a través de los medios declarados en el fomulario</label>
+                        <label for="contact-chkbx">Acepto que se comuniquen conmigo a través de los medios declarados en el fomulario</label>
                     </div>
                     <div class="boton-grid">
-                        <input type="submit" value="Enviar">
+                        <input class="boton" type="submit" value="Enviar">
                     </div>
                 </div>
             </form>
         </div>
-    </article>
+    </main>
+
+    <footer class="m-0 row p-3">
+        <div class="p-3 col-12 col-sm-6">
+          <div class="redes justify-content-center">
+            <p class="p-1 text-center">Redes oficiales</p>
+          </div>
+          <ul class="redes d-flex justify-content-center">
+            <li>
+              <a href="#" target="_blank">
+                <i class="fab fa-instagram m-1"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#" target="_blank">
+                <i class="fab fa-facebook-square m-1"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="p-3 col-12 col-sm-6">
+          <div class="ubicacion d-flex justify-content-center">
+            <p class="p-1">Balcarce 477, Godoy Cruz, Mendoza</p>
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+        </div>
+        <p class="d-flex justify-content-center col-12 m-0 pt-3 pb-2 autor">
+          &copy; Equipo 6 - CAC - 2024
+        </p>
+      </footer>
+
+    <!--JS-->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <!-- jQuery -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
 </body>
 </html>
