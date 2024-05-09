@@ -245,3 +245,41 @@ footer {
 /* MediaQuerys */
 
 
+
+
+
+.container{
+    width: 100%;
+    background-color: green;
+}
+.container .hero{
+    width: 100%;
+}
+
+/* dispositivos chicos */
+@media screen and (max-width:673px) {
+    .container{
+        width: 100%;
+    }
+}
+
+/* dispositivos medianos */
+@media screen and (min-width:673px) and (max-width:990px) {
+    .container{
+        
+    }
+}
+
+/* dispositivos grandes */
+@media screen and (min-width: 991px) and (max-width: 1296px) {
+    .container{
+        
+    }
+}
+
+/* dispositivos extra grandes */
+/* Monitor Eze */
+@media screen and (min-width: 1297px) {
+    .container{
+    }
+}
