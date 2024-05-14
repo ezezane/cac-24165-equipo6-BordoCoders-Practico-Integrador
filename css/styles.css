@@ -394,3 +394,50 @@ footer {
 /* Monitor Eze */
 @media screen and (min-width: 1297px) {
 }
+
+
+
+  /* Pagina Nosotros */
+  .container-nosotros {
+    margin: 10px auto;
+    width: 80%;
+  }
+  .container-nosotros ol {
+    list-style-type: space-counter;
+    padding-left: 40px;
+    margin: 20px 0;
+  }
+  .container-nosotros ul {
+    list-style-type: space-counter;
+    padding-left: 40px;
+    margin: 20px 0;
+    font-size: 1em;
+  }
+
+  .container-desc{
+    display: flex;
+    justify-content: center;
+  }
+
+  .container-desc img {
+    max-width: 600px;
+  }
+
+  .container-desc img:first-child {
+    padding-right: 10px;
+  }
+
+  .container-desc img:last-child {
+    padding-left: 10px;
+  }
+
+  .container-desc p {
+    display: inline;
+    vertical-align: top;
+    font-size: 1em;
+    text-align: left;
+  }
+
+  .container-nosotros h3{
+    margin: 20px 0;
+  }
