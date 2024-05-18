@@ -397,7 +397,11 @@ footer {
 
 
 
-  /* Pagina Nosotros */
+  /*
+    *************************************************
+                    Pagina Nosotros
+    *************************************************
+  */
   .container-nosotros {
     margin: 10px auto;
     width: 80%;
@@ -441,3 +445,18 @@ footer {
   .container-nosotros h3{
     margin: 20px 0;
   }
+
+  /* dispositivos chicos */
+@media screen and (max-width:673px) { 
+
+}
+
+/* dispositivos medianos */
+@media screen and (min-width:673px) and (max-width:990px) {
+
+}
+
+/* dispositivos grandes */
+@media screen and (min-width: 991px) and (max-width: 1296px) {
+  
+}
