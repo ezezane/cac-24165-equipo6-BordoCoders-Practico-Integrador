@@ -6,8 +6,8 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
     <title>Contacto</title>
 
     <script
@@ -66,7 +66,7 @@
         <!-- logo y título -->
         <section class="menu">
           <div class="menu-titulo">
-            <img src="img/logo-black.png" alt="Logo de la página"/>
+            <img src="img/logo-black.png" alt="Logo de la página">
             <h1>Borbo Perfumería</h1>
           </div>
         </section>
@@ -101,7 +101,7 @@
                 <p>Llena el formulario y convertite en revendedor</p>
             </div>
 
-            <form action="">
+            <form action="#" id="form" onsubmit="return validarEmail()">
                 <!--Seccion de datos personales-->
                 <h3>Datos personales</h3>
                 <br>
@@ -116,12 +116,12 @@
                     </div>
                     <div class="nacimiento-grid">
                         <label for="f-nac">Fecha de Nacimiento</label><br>
-                        <input type="date" name="f-nac" id="f-nac" required>
+                        <input type="date" name="f-nac" id="f-nac" max="2007-01-01" min="1920-12-31" required >
                     </div>
                     <div class="genero-grid">    
                         <label>Género</label><br>
                         <div class="genero-flex">
-                            <input type="radio" id="masc" name="genero" value="maculino">
+                            <input type="radio" id="masc" name="genero" value="masculino">
                             <label for="masc">Masculino</label><br>
                             <input type="radio" id="fem" name="genero" value="femenino">
                             <label for="fem">Femenino</label><br>
@@ -136,11 +136,11 @@
                     </div>
                     <div class="email-grid">
                         <label for="mail">Email</label><br>
-                        <input type="email" name="mail" id="mail" required>
+                        <input type="email" name="mail" id="email" value required>
                     </div>
                     <div class="conf-email-grid">
                         <label for="conf-email">Confirmar Email</label><br>
-                        <input type="email" name="conf-email" id="conf-email" required>
+                        <input type="email" name="conf-email" id="conf-email" value required>
                     </div>
                     <div class="tel-grid">
                         <label for="tel">Telefono</label><br>
@@ -148,12 +148,12 @@
                     </div>
                     <div class="provincia-grid">
                         <label for="provincia">Provincia</label><br>   
-                        <select name="provincia" id="provincia" required>
-                            <option value="buenos-aires">Buenos Aires</option>
+                        <select name="provincia" id="provincia">
+                            <option value="mendoza">Mendoza</option>
                             <option value="caba">CABA</option>
                             <option value="cordoba">Cordoba</option>
                             <option value="santa-fe">Santa Fe</option>
-                            <option value="entre-rios">Entre Rios</option>
+                            <option value="buenos-aires">Buenos Aires</option>
                         </select>
                     </div>
                     <div class="direccion-grid">
@@ -163,11 +163,9 @@
                     <div class="terminos-grid">
                         <input type="checkbox" name="term" id="term" required>
                         <label for="term">He leido y acepto los <a href="#">Terminos y Condiciones</a></label><br>
-                        <input type="checkbox" name="contact-chkbx" id="contact-chkbx" required>
-                        <label for="contact-chkbx">Acepto que se comuniquen conmigo a través de los medios declarados en el fomulario</label>
                     </div>
                     <div class="boton-grid">
-                        <input class="boton" type="submit" value="Enviar">
+                        <input class="boton-contact" type="submit" value="Enviar">
                     </div>
                 </div>
             </form>
@@ -204,7 +202,7 @@
         <div class="p-3 col-12 col-sm-6">
           <div class="ubicacion d-flex justify-content-center">
             <p class="p-1">Balcarce 477, Godoy Cruz, Mendoza</p>
-            <i class="fas fa-map-marker-alt"></i>
+            <i class="fas fa-map-marker-alt"></i><br>
           </div>
         </div>
         <p class="d-flex justify-content-center col-12 m-0 pt-3 pb-2 autor">
@@ -224,5 +222,8 @@
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
       crossorigin="anonymous"
     ></script>
+
+    <script src="js/form.js"> 
+    </script>
 </body>
 </html>
