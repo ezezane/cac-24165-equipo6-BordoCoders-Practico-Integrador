@@ -10,7 +10,7 @@ Repositorio para le entrega del proyecto integrador 1, para el curso de Full Sta
 
 
 # URL del proyecto en Netlify
-https://664a4b8592f790f8e988a77b--ubiquitous-lily-98d262.netlify.app/
+https://664a55377c57cafa98ac9300--luxury-narwhal-dcb533.netlify.app/
 
 
 # Tecnologías utilizadas
