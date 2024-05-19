@@ -29,14 +29,15 @@ a {
 .menu {
   background-color: #000;
 }
-.menu .menu-titulo {
+.menu-titulo {
   height: 160px;
   background-color: #fff;
   display: flex;
   place-content: center;
   place-items: center;
 }
-.menu .menu-titulo h1 {
+
+.menu-titulo h1 {
   height: 80px;
   margin-left: 5%;
   display: flex;
@@ -45,27 +46,32 @@ a {
   font-size: 3em;
   font-family: "Kaushan Script", sans-serif;
 }
-.menu .menu-titulo img {
+
+.menu-titulo img {
   width: 100px;
   height: 100px;
 }
-.menu .menu__caja {
-  height: 40px;
+
+.menu__caja {
+  height: 160px;
 }
-.menu .menu__caja ul {
+
+.menu__caja ul {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  text-align: center;
 }
-.menu .menu__caja ul li {
+
+.menu__caja ul li {
   padding: 8px;
   height: 40px;
   font-size: 1em;
   font-weight: bold;
 }
-.menu .menu__caja ul li:hover {
+.menu__caja ul li:hover {
   background-color: #c2c2c2;
 }
-.menu .menu__caja ul li a {
+.menu__caja ul li a {
   color: #fff;
 }
 
@@ -118,7 +124,7 @@ footer .autor {
 /* -------------------- LINK WP -------------------- */
 .whatsapp a {
   position: fixed;
-  bottom: 50%;
+  bottom: 10%;
   right: 1em;
 }
 .whatsapp a i {
@@ -525,5 +531,23 @@ footer .autor {
   .container-nosotros {
     width: 85%;
     border: 1px solid red;
+  }
+}
+
+
+/* media 992px */
+@media (min-width: 992px) {
+  .menu .menu__caja {
+    height: 50px;
+  }
+  .menu .menu__caja ul {
+    flex-direction: row;
+    place-items: center;
+    place-content: center;
+  }
+  .menu .menu__caja ul li {
+    height: 50px;
+    width: 100%;
+    font-size: 1.2em;
   }
 }
