@@ -29,11 +29,10 @@
     <!-- css local -->
     <link rel="stylesheet" href="css/styles.css" />
     <!-- favicon -->
-    <link rel="icon" type="image/x-icon" href="/img/logo-black.png">
+    <link rel="icon" type="image/x-icon" href="/img/logo-black.png" />
   </head>
-
   <body>
-    <!-- carousel -->
+    <!-- carousel títulos -->
     <div class="carousel">
       <div
         id="carouselExampleControls"
@@ -83,33 +82,112 @@
     <!-- header nav -->
     <header class="m-0 menu">
       <div class="menu__caja d-flex justify-content-center">
-          <ul>
-              <li>
-                  <a href="index.html">Inicio</a>
-              </li>
-              <li>
-                  <a href="nosotros.html">Nosotros</a>
-              </li>
-              <li>
-                  <a href="productos.html">Productos</a>
-              </li>
-              <li class="menu__item">
-                  <a href="contact.html">Ser revenderor</a>
-              </li>
-          </ul>
+        <ul>
+          <li>
+            <a href="index.html">Inicio</a>
+          </li>
+          <li>
+            <a href="nosotros.html">Nosotros</a>
+          </li>
+          <li>
+            <a href="productos.html">Productos</a>
+          </li>
+          <li class="menu__item">
+            <a href="contact.html">Ser revenderor</a>
+          </li>
+        </ul>
       </div>
     </header>
 
-    <main>
-      <div>
-        <h2 class="titulo-b">Nuestros Productos</h2>
-      </div>
-
-      <!-- productos -->
-      <section id="nuestros-productos">
-        <div id="contenedor-productos"></div>
+    <main id="main-index">
+      <!-- carousel imagenes -->
+      <section class="p-0 container-fluid">
+        <div
+          id="carouselExampleControls"
+          class="carousel slide"
+          data-bs-ride="carousel"
+        >
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img
+                src="img/a.png"
+                class="d-block w-100"
+                alt="modelo femenina con perfume"
+              />
+            </div>
+            <div class="carousel-item">
+              <img
+                src="img/b.jpg"
+                class="d-block w-100"
+                alt="Modelo masculino con perfume"
+              />
+            </div>
+          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselExampleControls"
+            data-bs-slide="prev"
+          >
+            <span aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselExampleControls"
+            data-bs-slide="next"
+          >
+            <span aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
       </section>
 
+      <div>
+        <h2 class="titulo mt-3">Nuevos lanzamientos</h2>
+      </div>
+
+      <!-- productos lanzamiento -->
+      <section id="nuestros-productos-lanzamiento">
+        <div id="contenedor-productos-lanzamiento" class="mt-5"></div>
+      </section>
+
+      <!-- carousel créditos-->
+      <div class="carousel">
+        <div
+          id="carouselExampleControls"
+          class="carousel slide"
+          data-bs-ride="carousel"
+        >
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <h3 class="titulo">Aprovechá los nuevos productos</h2>
+            </div>
+            <div class="carousel-item">
+              <h3 class="titulo">Disponibles hasta agotar stock</h2>
+            </div>
+          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselExampleControls"
+            data-bs-slide="prev"
+          >
+            <span aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselExampleControls"
+            data-bs-slide="next"
+          >
+            <span aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
     </main>
 
     <!-- whatsapp -->

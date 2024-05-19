@@ -1,3 +1,10 @@
+let productosLanzamiento = [
+  { id: 1, marca: "Homen", nombre: "Verum", img: "img/1.jpg" },
+  { id: 2, marca: "Biografia", nombre: "Assinatura", img: "img/2.jpg" },
+  { id: 9, marca: "Kriska", nombre: "Alegria", img: "img/9.jpg" },
+  { id: 10, marca: "Luna", nombre: "Intenso", img: "img/10.jpg" }
+]
+
 let productos = [
   { id: 1, marca: "Homen", nombre: "Verum", precio: 45000, img: "img/1.jpg" },
   { id: 2, marca: "Biografia", nombre: "Assinatura", precio: 36000, img: "img/2.jpg" },
@@ -11,4 +18,6 @@ let productos = [
   { id: 10, marca: "Luna", nombre: "Intenso", precio: 42000, img: "img/10.jpg" },
   { id: 11, marca: "Ekos", nombre: "Alma", precio: 42000, img: "img/11.jpg" },
   { id: 12, marca: "Essencial", nombre: "Supreme", precio: 39000, img: "img/12.jpg" }
-];
+]
+
+
