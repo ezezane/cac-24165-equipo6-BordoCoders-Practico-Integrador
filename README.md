@@ -10,7 +10,7 @@ Repositorio para le entrega del proyecto integrador 1, para el curso de Full Sta
 
 
 # URL del proyecto en Netlify
-https://664a55377c57cafa98ac9300--luxury-narwhal-dcb533.netlify.app/
+https://dazzling-froyo-22efae.netlify.app/
 
 
 # Tecnologías utilizadas
