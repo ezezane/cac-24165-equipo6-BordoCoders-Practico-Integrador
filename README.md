@@ -2,7 +2,7 @@
 Repositorio para le entrega del proyecto integrador 1, para el curso de Full Stack dictado por Codo a Codo, comisión 24.165.
 
 ## Comentarios del proyecto
-La carpeta llamada "_en-desarrollo" contiene archivos que aún no fueron finalizados, y se separan de la raíz para no mezclar con los entregables finales.
+La carpeta llamada "_en-desarrollo" contiene archivos que aún no fueron finalizados, y se separan de la raíz para no mezclar con los entregables finales.  
 En la carpeta "docs" está la pauta del proyecto y además la documentación preliminar original de modelo y la de nuestro proyecto.
 
 # Integrantes del proyecto
