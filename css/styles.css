@@ -459,16 +459,15 @@ footer .autor {
   display: flex;
   justify-content: center;
 }
+.container-desc img{
+  max-width: 600px;
+}
 
 .container-desc img:first-child {
-  max-width: 1024px;
-  max-height: 684px;
   padding-right: 10px;
 }
 
 .container-desc img:last-child {
-  max-width: 960px;
-  max-height: 1024px;
   padding-left: 10px;
 }
 
@@ -530,7 +529,6 @@ footer .autor {
 @media screen and (min-width: 991px) and (max-width: 1296px) {
   .container-nosotros {
     width: 85%;
-    border: 1px solid red;
   }
 }
 
