@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, redirect
-
 from db_crud import *
 
 app = Flask(__name__)
@@ -51,6 +50,7 @@ def cargar_productos_admin():
     return render_template("/backend/productos_db.html",title=title,productos=productos)
 
 
+
 # CREAR NUEVO PRODUCTO
 # paso 1 FORM
 @app.route("/admin/crear")
@@ -58,7 +58,7 @@ def crear_productos_admin():
     title = 'Create | Perfumería Borbocoders'
     return render_template("/backend/form_create.html",title=title)
 
-# paso 2 CARGA
+# paso 2 CREAR
 @app.route("/cargar_producto", methods=['POST'])
 def crear_productos_db():
     #print(request.form)
@@ -70,20 +70,28 @@ def crear_productos_db():
     print(result)
     return redirect("/admin")
 
+
+
 # EDITAR PRODUCTO
+# paso 1 FORM precargado
+@app.route("/admin/editar/<int:id>")
+def editar_productos_form(id):
+    productoID = ReadOneProduct(id)
+    title = 'Update | Perfumería Borbocoders'
+    return render_template("/backend/form_update.html",title=title,producto=productoID)
+
+# paso 2 EDITAR
+@app.route("/editar_producto", methods=['POST'])
+def editar_productos_db():
+    prod_id = request.form['prod_id']
+    prod_marca = request.form['marca']
+    prod_name = request.form['name']
+    prod_precio = request.form['precio']
+    prod_URLimg = request.form['imgURL']
+    result = UpdateDB(prod_marca,prod_name,prod_precio,prod_URLimg,prod_id)
+    print(result)
+    return redirect("/admin")
+
 
 
 # ELIMINAR PRODUCTO
-
-
-
-
-
-
-
-
-
-# LISTADO DE PRODUCTOS JS
-@app.route("/productos-js")
-def cargar_productos_js():
-    return render_template("productos.html",title=title)
