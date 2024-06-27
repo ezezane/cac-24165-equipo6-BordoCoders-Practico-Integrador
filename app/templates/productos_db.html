@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		{% include '_modulo_head.html' %}
+	</head>
+	<body>
+		{% include '_modulo_header_carrousel.html' %}
+
+		{% include '_modulo_header_logo.html' %}
+
+		{% include '_modulo_menu.html' %}
+
+		<!-- CONTENIDO DE LA PÁGINA -->
+		<main>
+			<div>
+				<h2 class="titulo-b">Nuestros Productos</h2>
+			</div>
+
+			<!-- productos -->
+			<div id="nuestros-productos">
+				<div id="contenedor-productos">
+					{% for i in productos %}
+						<div class="card-productos">
+							<article class="producto">
+								<img class="producto-img" src="static/{{i[4]}}" alt="{{i[2]}}">
+								<p class="producto-marca">{{i[1]}}</p>
+								<p class="producto-nombre">{{i[2]}}</p>
+								<p class="producto-precio">{{i[3]}}</p>
+							</article>
+						</div>
+            	{% endfor%}
+				</div>
+			</div>
+		</main>
+		<!-- FIN CONTENIDO DE LA PÁGINA -->
+
+
+		{% include '_modulo_whatsapp.html' %}
+
+		{% include '_modulo_footer.html' %}
+
+		
+	</body>
+</html>

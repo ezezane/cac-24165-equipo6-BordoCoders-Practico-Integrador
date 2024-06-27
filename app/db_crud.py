@@ -1,35 +1,19 @@
-# pip install pymysql -> si no tenemos instalada la dependencia
-# importar pymysql para generar conexiones mysql sencillas con python
-
 import pymysql
-
-# conectar con el servidro MySQL
-def conectarMySQL():
-    # nombre del servidor, en local es localhost, hay que ver el nombre en real
-    host='localhost',    
-    # nombre del usuario, en local podemos usar root, en un servidor el usuario cambiará
-    user='root',
-    # el password, en local puede estar en blanco si usamos root, en un servidor hay que ver el que corresponde
-    password='',
-    # nombre de la base de datos
-    database='Borbocoders',
-    return pymysql.connect(host=host,user=user,password=password,database=database)
-
+from db_conection import *
 
 # función para hacer la llamada a la base y traer todos los productos
 # esto devuelve una tupla, la cual hay que recorrerla para mostrarla
-def ReadDB():
+def ReadProductos():
     # conexion mysql
     conexion = conectarMySQL()
-    
     productos = []
     with conexion.cursor() as cursor:
         # Consulta a la base
-        sql = "SELECT * FROM productos"
-    # consulta
+        sql = """SELECT * FROM productos"""
+        # consulta
         cursor.execute(sql)
         productos = cursor.fetchall()
-    # return resultados
+        # return resultados
         return productos
 
 

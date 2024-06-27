@@ -1,5 +1,7 @@
 from flask import Flask, render_template
 
+from db_crud import *
+
 app = Flask(__name__)
 
 # ---------------------
@@ -27,11 +29,12 @@ def cargar_contacto():
     return render_template("contact.html",title=title)
 
 
-# LISTADO DE PRODUCTOS
+# LISTADO DE PRODUCTOS DB
 @app.route("/productos")
 def cargar_productos():
     title = 'Productos | Perfumería Borbocoders'
-    return render_template("productos.html",title=title)
+    productos = ReadProductos()
+    return render_template("productos_db.html",title=title,productos=productos)
 
 
 # --------------------
@@ -49,3 +52,16 @@ def cargar_productos():
 
 
 # ELIMINAR PRODUCTO
+
+
+
+
+
+
+
+
+
+# LISTADO DE PRODUCTOS JS
+@app.route("/productos-js")
+def cargar_productos_js():
+    return render_template("productos.html",title=title)
