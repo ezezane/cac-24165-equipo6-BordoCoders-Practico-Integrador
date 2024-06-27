@@ -95,3 +95,20 @@ def editar_productos_db():
 
 
 # ELIMINAR PRODUCTO
+# paso 1 FORM precargado
+@app.route('/admin/borrar_producto/<int:id>')
+def borrar_productos_form(id):
+    productoID = ReadOneProduct(id)
+    title = 'Delete | Perfumería Borbocoders'
+    return render_template("/backend/form_delete.html",title=title,producto=productoID)
+
+# paso 2 BORRAR
+@app.route("/eliminar_producto/<int:id>", methods=['POST'])
+def borrar_productos_db(id):
+    conexion = conectarMySQL()
+    with conexion.cursor() as cursor:
+        cursor.execute("DELETE FROM productos WHERE id = %s", (id))
+        result = cursor
+    conexion.commit()
+    conexion.close()
+    return redirect("/admin")
