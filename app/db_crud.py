@@ -19,15 +19,13 @@ def ReadProductos():
 
 # función para crear nuevos registros en la base de datos
 # TODO: actualizar los valores por las variables
-def CreateDB():
-    # conexion mysql
+def CreateDB(marca,nombre,precio,imagen):
     conexion = conectarMySQL()
-
     with conexion.cursor() as cursor:
-        # Create a new record
-        sql = "INSERT INTO 'productos' ('marca', 'nombre', 'precio', 'imagen') VALUES ()"
-        cursor.execute(sql)
+        sql = "INSERT INTO productos (marca, nombre, precio, imagen) VALUES (%s, %s, %s, %s)"
+        cursor.execute(sql,(marca,nombre,precio,imagen))
         conexion.commit()
+        conexion.close()
 
 
 # función para actualizar un producto de la base en función del ID

@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect
 
 from db_crud import *
 
@@ -43,10 +43,32 @@ def cargar_productos():
 
 
 # HOME / LISTADO DE PRODUCTOS CARGADOS
+# LISTADO DE PRODUCTOS DB
+@app.route("/admin")
+def cargar_productos_admin():
+    title = 'CRUD | Perfumería Borbocoders'
+    productos = ReadProductos()
+    return render_template("/backend/productos_db.html",title=title,productos=productos)
 
 
 # CREAR NUEVO PRODUCTO
+# paso 1 FORM
+@app.route("/admin/crear")
+def crear_productos_admin():
+    title = 'Create | Perfumería Borbocoders'
+    return render_template("/backend/form_create.html",title=title)
 
+# paso 2 CARGA
+@app.route("/cargar_producto", methods=['POST'])
+def crear_productos_db():
+    #print(request.form)
+    prod_marca = request.form['marca']
+    prod_name = request.form['name']
+    prod_precio = request.form['precio']
+    prod_URLimg = request.form['imgURL']
+    result = CreateDB(prod_marca,prod_name,prod_precio,prod_URLimg)
+    print(result)
+    return redirect("/admin")
 
 # EDITAR PRODUCTO
 

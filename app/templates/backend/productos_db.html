@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		{% include '_modulo_head.html' %}
+	</head>
+	<body>
+
+		{% include '_modulo_header_logo.html' %}
+
+		<div class="container">
+			<!-- CONTENIDO DE LA PÁGINA -->
+		
+		<h1>Listado de productos</h1>
+
+		<main>
+			<a href="/admin/crear" class="btn btn-success">Crear producto</a>
+
+			<!-- productos -->
+			<div class="listado-prod-back">
+				<div class="row text-center">
+					<div class="col-3">
+						<h2>imagen</h2>
+					</div>
+					<div class="col-3">
+						<h2>producto</h2>
+					</div>
+					<div class="col-3">
+						<h2>marca</h2>
+					</div>
+					<div class="col-2">
+						<h2>acciones</h2>
+					</div>
+				</div>
+				<hr>
+				{% for i in productos %}
+					<div class="row text-center">
+						<div class="col-3">
+							<img class="producto-img" src="{{i[4]}}" alt="{{i[2]}}" style="max-width: 220px;">
+						</div>
+						<div class="col-3">
+							<span class="producto-marca">{{i[1]}}</span>
+						</div>
+						<div class="col-3">
+							<span class="producto-nombre align-bottom">{{i[2]}}</span>
+						</div>
+						<div class="col-2">
+							<a href=""><span class="align-bottom">editar</span></a>
+							<a href=""><span class="align-bottom">borrar</span></a>
+						</div>
+					</div>
+					<hr>
+            	{% endfor%}
+			</div>
+		</main>
+		<!-- FIN CONTENIDO DE LA PÁGINA -->
+		</div>
+
+
+		{% include '_modulo_whatsapp.html' %}
+
+		{% include '_modulo_footer.html' %}
+
+		
+	</body>
+</html>

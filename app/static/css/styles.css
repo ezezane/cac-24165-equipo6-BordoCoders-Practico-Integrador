@@ -335,7 +335,6 @@ footer .autor {
 
 .container {
   width: 100%;
-  background-color: green;
 }
 .container .hero {
   width: 100%;
@@ -548,4 +547,8 @@ footer .autor {
     width: 100%;
     font-size: 1.2em;
   }
+}
+
+.listado-prod-back{
+  margin-top: 50px;
 }
