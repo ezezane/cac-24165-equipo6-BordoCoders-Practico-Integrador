@@ -11,21 +11,21 @@ app = Flask(__name__)
 @app.route("/")
 def hello_world():
     title = 'Home | Perfumería Borbocoders'
-    return render_template("index.html",title=title)
+    return render_template("frontend/index.html",title=title)
 
 
 # SOBRE NOSOTROS
 @app.route("/nosotros")
 def cargar_nosotros():
     title = 'Sobre nosotros | Perfumería Borbocoders'
-    return render_template("nosotros.html",title=title)
+    return render_template("frontend/nosotros.html",title=title)
 
 
 # CONTACTO
 @app.route("/contacto")
 def cargar_contacto():
     title = 'Quiero ser revendedor | Perfumería Borbocoders'
-    return render_template("contact.html",title=title)
+    return render_template("frontend/contact.html",title=title)
 
 
 # LISTADO DE PRODUCTOS DB
@@ -33,7 +33,7 @@ def cargar_contacto():
 def cargar_productos():
     title = 'Productos | Perfumería Borbocoders'
     productos = ReadProductos()
-    return render_template("productos_db.html",title=title,productos=productos)
+    return render_template("frontend/productos_db.html",title=title,productos=productos)
 
 
 # --------------------
