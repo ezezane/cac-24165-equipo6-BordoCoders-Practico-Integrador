@@ -12,9 +12,11 @@
 		
 		<h1>Editar producto en DB</h1>
 
+		<div id="mensaje"></div>
+
 		<main>
 
-			<form class="mb-3" action="/editar_producto_img" enctype=multipart/form-data method="POST">
+			<form id="form" class="mb-3" action="/editar_producto_img" enctype=multipart/form-data method="POST" onsubmit="event.preventDefault(); validateForm()">
 				<!-- id del producto oculto para enviar en el update -->
 				<input type="hidden" name="prod_id" value="{{producto[0]}}">
 

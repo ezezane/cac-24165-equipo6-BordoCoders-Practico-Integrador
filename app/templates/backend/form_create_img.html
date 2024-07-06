@@ -12,9 +12,11 @@
 		
 		<h1>Crear producto en DB</h1>
 
+		<div id="mensaje"></div>
+
 		<main>
 
-			<form class="mb-3" action="/cargar_producto_img" enctype=multipart/form-data method="POST">
+			<form id="form" class="mb-3" action="/cargar_producto_img" enctype=multipart/form-data method="POST" onsubmit="event.preventDefault(); validateForm()">
 				<div class="form-group mb-3">
                     <label for="marca" class="form-label">Marca</label>
                     <input type="text" class="form-control" id="marca" name="marca">
@@ -37,6 +39,7 @@
 				</div>
 
 				<button type="submit" class="btn btn-primary">Cargar producto</button>
+				<!-- <span class="btn btn-primary" onclick="validateForm()">Cargar producto</span> -->
 				<a href="/admin/"><button type="button" class="btn btn-secondary">Cancelar</button></a>
 			</form>
 		</main>
