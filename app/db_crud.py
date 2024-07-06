@@ -9,7 +9,7 @@ def ReadProductos():
     productos = []
     with conexion.cursor() as cursor:
         # Consulta a la base
-        sql = """SELECT * FROM productos"""
+        sql = """SELECT * FROM productos ORDER BY id DESC"""
         # consulta
         cursor.execute(sql)
         productos = cursor.fetchall()

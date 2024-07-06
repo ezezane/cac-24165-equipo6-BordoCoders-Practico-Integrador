@@ -56,8 +56,9 @@
 							<span class="producto-precio align-bottom">{{i[3]}}</span>
 						</div>
 						<div class="col-2">
-							<a href="/admin/editar/{{i[0]}}"><span class="align-bottom">editar</span></a>
-							<a href="/admin/borrar_producto/{{i[0]}}"><span class="align-bottom">borrar</span></a>
+							<a href="/admin/editar/{{i[0]}}"><i class="fa-solid fa-pen" data-bs-toggle="tooltip" data-bs-placement="top" title="editar"></i></a>
+							<span>&nbsp;&nbsp;&nbsp;</span>
+							<a href="/admin/borrar_producto/{{i[0]}}" data-bs-toggle="tooltip" data-bs-placement="top" title="eliminar"><i class="fa-solid fa-trash"></i></a>
 						</div>
 					</div>
 					<hr>
@@ -69,11 +70,10 @@
 		<!-- FIN CONTENIDO DE LA PÁGINA -->
 		</div>
 
+		{% include 'backend/_modulo_js_back.html' %}
 
 		{% include 'frontend/_modulo_whatsapp.html' %}
 
 		{% include 'frontend/_modulo_footer.html' %}
-
-		
 	</body>
 </html>

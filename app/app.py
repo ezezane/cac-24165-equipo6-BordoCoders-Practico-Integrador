@@ -72,6 +72,7 @@ def cargar_productos():
 @app.route("/admin/")
 def cargar_productos_admin():
     title = 'CRUD | Perfumería Borbocoders'
+    #mensaje = mensaje
     productos = ReadProductos()
     return render_template("/backend/productos_db.html",title=title,productos=productos)
 
@@ -86,7 +87,7 @@ def crear_productos_img_admin():
 
 # paso 2 CREAR
 @app.route("/cargar_producto_img", methods=['POST'])
-def crear_productos_img_db():   
+def crear_productos_img_db():
     if request.method == 'POST':
         # check if the post request has the file part
         if 'file' not in request.files:
@@ -110,7 +111,11 @@ def crear_productos_img_db():
             prod_precio = request.form['precio']
             prod_URLimg = filename
             result = CreateDB(prod_marca,prod_name,prod_precio,prod_URLimg)
+
+            #mensaje = '<div class="alert alert-success"><p>Se creó correctamente el producto</p></div>'
             return redirect("/admin/")
+            #return redirect(url_for("/admin/", mensaje=mensaje))
+            #return redirect(url_for('/admin/', mensaje=mensaje))
 
 
 
@@ -149,7 +154,9 @@ def editar_productos_img_db():
             prod_precio = request.form['precio']
             prod_URLimg = filename
             result = UpdateDB(prod_marca,prod_name,prod_precio,prod_URLimg,prod_id)
-            return redirect("/admin/")
+
+            #mensaje = '<div class="alert alert-info"><p>Se editó correctamente el producto</p></div>'
+            return redirect("/admin/",msj=mensaje)
 
 
 
@@ -170,6 +177,7 @@ def borrar_productos_img_db(id):
         result = cursor
     conexion.commit()
     conexion.close()
+    #mensaje = '<div class="alert alert-danger"><p>Se eliminó correctamente el producto</p></div>'
     return redirect("/admin/")
 
 

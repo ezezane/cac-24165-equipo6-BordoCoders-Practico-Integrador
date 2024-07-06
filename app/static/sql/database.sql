@@ -17,6 +17,8 @@ CREATE TABLE productos (
     imagen VARCHAR(255) NOT NULL
 );
 
+# esta entrada nos permite reiniciar la tabla como si nunca se hubieran cargado los productos.
+Truncate table productos;
 
 # estos son los productos del JS que tiene los productos
 # solamente faltaría ajustar el tema de las rutas de las imágenes una vez que las subamos a algún hosting gratis
