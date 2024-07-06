@@ -91,15 +91,15 @@ def crear_productos_img_db():
     if request.method == 'POST':
         # check if the post request has the file part
         if 'file' not in request.files:
-            flash('no llegó ninguna imagen en el alta')
-            return redirect(request.url)
+            #flash('no llegó ninguna imagen en el alta')
+            return redirect(request.referrer)
         file = request.files['file']
 
         # If the user does not select a file, the browser submits an
         # empty file without a filename.
         if file.filename == '':
-            flash('No selected file')
-            return redirect(request.url)
+            #flash('No selected file')
+            return redirect(request.referrer)
         
         # si los checkeos son válidos
         if file and allowed_file(file.filename):
@@ -133,15 +133,15 @@ def editar_productos_img_db():
     if request.method == 'POST':
         # check if the post request has the file part
         if 'file' not in request.files:
-            flash('no llegó ninguna imagen en el alta')
-            return redirect(request.url)
+            #flash('no llegó ninguna imagen en el alta')
+            return redirect(request.referrer)
         file = request.files['file']
 
         # If the user does not select a file, the browser submits an
         # empty file without a filename.
         if file.filename == '':
-            flash('No selected file')
-            return redirect(request.url)
+            #flash('No selected file')
+            return redirect(request.referrer)
         
         # si los checkeos son válidos
         if file and allowed_file(file.filename):
@@ -154,9 +154,7 @@ def editar_productos_img_db():
             prod_precio = request.form['precio']
             prod_URLimg = filename
             result = UpdateDB(prod_marca,prod_name,prod_precio,prod_URLimg,prod_id)
-
-            #mensaje = '<div class="alert alert-info"><p>Se editó correctamente el producto</p></div>'
-            return redirect("/admin/",msj=mensaje)
+            return redirect("/admin/")
 
 
 
