@@ -14,7 +14,7 @@
 
 		<main>
 
-			<form class="mb-3" action="/eliminar_producto/{{producto[0]}}" method="POST">
+			<form class="mb-3" action="/eliminar_producto/{{producto[0]}}" enctype=multipart/form-data method="POST">
 				<!-- id del producto oculto para enviar en el update -->
 				<input type="hidden" name="id" value="{{producto[0]}}">
 
@@ -47,7 +47,7 @@
 				</div>
 
 				<div class="form-group mb-3">
-					<img src="{{producto[4]}}" alt="{{producto[1]}} {{producto[2]}}" style="max-width: 220px;">
+					<img src="/static/img/uploads/{{producto[4]}}" alt="{{producto[1]}} {{producto[2]}}" style="max-width: 220px;">
 				</div>
 
 				<button type="submit" class="btn btn-danger">Eliminar producto</button>

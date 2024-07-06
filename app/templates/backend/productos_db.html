@@ -44,7 +44,7 @@
 							<span class="producto-precio align-bottom">{{i[0]}}</span>
 						</div>
 						<div class="col-2">
-							<img class="producto-img" src="{{i[4]}}" alt="{{i[2]}}" style="max-width: 220px;">
+							<img class="producto-img" src="/static/img/uploads/{{i[4]}}" alt="{{i[2]}}" style="max-width: 220px;">
 						</div>
 						<div class="col-2">
 							<span class="producto-marca">{{i[1]}}</span>
@@ -62,6 +62,8 @@
 					</div>
 					<hr>
             	{% endfor%}
+
+				<a href="/admin/crear" class="btn btn-success">Crear producto</a>
 			</div>
 		</main>
 		<!-- FIN CONTENIDO DE LA PÁGINA -->

@@ -14,7 +14,7 @@
 
 		<main>
 
-			<form class="mb-3" action="/cargar_producto" method="POST">
+			<form class="mb-3" action="/cargar_producto_img" enctype=multipart/form-data method="POST">
 				<div class="form-group mb-3">
                     <label for="marca" class="form-label">Marca</label>
                     <input type="text" class="form-control" id="marca" name="marca">
@@ -31,8 +31,9 @@
 				</div>
 
 				<div class="form-group mb-3">
-					<label for="imgURL" class="form-label">URL imagen</label>
-					<input type="text" class="form-control" id="imgURL" name="imgURL">
+					<label for="file" class="form-label">URL imagen</label>
+					<input type="file" class="form-control" id="file" name="file">
+					<span class="small"><strong>únicamente se aceptan archivos con la extensión: 'png', 'jpg', 'jpeg', 'gif'</strong></span>
 				</div>
 
 				<button type="submit" class="btn btn-primary">Cargar producto</button>

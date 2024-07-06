@@ -1,7 +1,33 @@
 from flask import Flask, render_template, request, redirect
 from db_crud import *
 
+# imports para upload de imagen
+import os
+import time
+from flask import flash, url_for
+# secure_filename permite realizar una limpieza en el nombre del archivo
+from werkzeug.utils import secure_filename
+
+# carpeta donde se guardarán los archivos cargados por el CRUD
+UPLOAD_FOLDER = 'static/img/uploads/'
+# extensiones aceptadas
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
+
 app = Flask(__name__)
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+# función para verificar la extensión aceptada
+def allowed_file(filename):
+    return '.' in filename and \
+        filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+# función para generar el nombre del archivo que se subirá
+# se usa el timestamp + el nombre original para evitar nombres duplicados
+def filename_with_timestamp(filename):
+    filename = secure_filename(filename)
+    ts = round(time.time() * 1000)
+    filename = str(ts) + "_" + filename
+    return filename
 
 # ---------------------
 # PÁGINAS DEL FRONT-END
@@ -43,17 +69,122 @@ def cargar_productos():
 
 # HOME / LISTADO DE PRODUCTOS CARGADOS
 # LISTADO DE PRODUCTOS DB
-@app.route("/admin")
+@app.route("/admin/")
 def cargar_productos_admin():
     title = 'CRUD | Perfumería Borbocoders'
     productos = ReadProductos()
     return render_template("/backend/productos_db.html",title=title,productos=productos)
 
 
+# CREAR NUEVO PRODUCTO -> método IMG
+# documentación https://flask.palletsprojects.com/en/2.3.x/patterns/fileuploads/
+# paso 1 FORM
+@app.route("/admin/crear")
+def crear_productos_img_admin():
+    title = 'Create | Perfumería Borbocoders'
+    return render_template("/backend/form_create_img.html",title=title)
+
+# paso 2 CREAR
+@app.route("/cargar_producto_img", methods=['POST'])
+def crear_productos_img_db():   
+    if request.method == 'POST':
+        # check if the post request has the file part
+        if 'file' not in request.files:
+            flash('no llegó ninguna imagen en el alta')
+            return redirect(request.url)
+        file = request.files['file']
+
+        # If the user does not select a file, the browser submits an
+        # empty file without a filename.
+        if file.filename == '':
+            flash('No selected file')
+            return redirect(request.url)
+        
+        # si los checkeos son válidos
+        if file and allowed_file(file.filename):
+            filename = filename_with_timestamp(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+
+            prod_marca = request.form['marca']
+            prod_name = request.form['name']
+            prod_precio = request.form['precio']
+            prod_URLimg = filename
+            result = CreateDB(prod_marca,prod_name,prod_precio,prod_URLimg)
+            return redirect("/admin/")
+
+
+
+# EDITAR PRODUCTO
+# paso 1 FORM precargado
+@app.route("/admin/editar/<int:id>")
+def editar_productos_img_form(id):
+    productoID = ReadOneProduct(id)
+    title = 'Update | Perfumería Borbocoders'
+    return render_template("/backend/form_update_img.html",title=title,producto=productoID)
+
+# paso 2 EDITAR
+@app.route("/editar_producto_img", methods=['POST'])
+def editar_productos_img_db():
+    if request.method == 'POST':
+        # check if the post request has the file part
+        if 'file' not in request.files:
+            flash('no llegó ninguna imagen en el alta')
+            return redirect(request.url)
+        file = request.files['file']
+
+        # If the user does not select a file, the browser submits an
+        # empty file without a filename.
+        if file.filename == '':
+            flash('No selected file')
+            return redirect(request.url)
+        
+        # si los checkeos son válidos
+        if file and allowed_file(file.filename):
+            filename = filename_with_timestamp(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+
+            prod_id = request.form['prod_id']
+            prod_marca = request.form['marca']
+            prod_name = request.form['name']
+            prod_precio = request.form['precio']
+            prod_URLimg = filename
+            result = UpdateDB(prod_marca,prod_name,prod_precio,prod_URLimg,prod_id)
+            return redirect("/admin/")
+
+
+
+# ELIMINAR PRODUCTO
+# paso 1 FORM precargado
+@app.route('/admin/borrar_producto/<int:id>')
+def borrar_productos_img_form(id):
+    productoID = ReadOneProduct(id)
+    title = 'Delete | Perfumería Borbocoders'
+    return render_template("/backend/form_delete_img.html",title=title,producto=productoID)
+
+# paso 2 BORRAR
+@app.route("/eliminar_producto/<int:id>", methods=['POST'])
+def borrar_productos_img_db(id):
+    conexion = conectarMySQL()
+    with conexion.cursor() as cursor:
+        cursor.execute("DELETE FROM productos WHERE id = %s", (id))
+        result = cursor
+    conexion.commit()
+    conexion.close()
+    return redirect("/admin/")
+
+
+
+
+
+
+# *********************************************************************
+# MÉTODO ORIGINAL V1
+# CRUD CON URL DE IMAGEN
+# *********************************************************************
 
 # CREAR NUEVO PRODUCTO
 # paso 1 FORM
-@app.route("/admin/crear")
+@app.route("/admin/crear2")
 def crear_productos_admin():
     title = 'Create | Perfumería Borbocoders'
     return render_template("/backend/form_create.html",title=title)
@@ -68,13 +199,12 @@ def crear_productos_db():
     prod_URLimg = request.form['imgURL']
     result = CreateDB(prod_marca,prod_name,prod_precio,prod_URLimg)
     print(result)
-    return redirect("/admin")
-
+    return redirect("/admin/")
 
 
 # EDITAR PRODUCTO
 # paso 1 FORM precargado
-@app.route("/admin/editar/<int:id>")
+@app.route("/admin/editar2/<int:id>")
 def editar_productos_form(id):
     productoID = ReadOneProduct(id)
     title = 'Update | Perfumería Borbocoders'
@@ -90,20 +220,19 @@ def editar_productos_db():
     prod_URLimg = request.form['imgURL']
     result = UpdateDB(prod_marca,prod_name,prod_precio,prod_URLimg,prod_id)
     print(result)
-    return redirect("/admin")
-
+    return redirect("/admin/")
 
 
 # ELIMINAR PRODUCTO
 # paso 1 FORM precargado
-@app.route('/admin/borrar_producto/<int:id>')
+@app.route('/admin/borrar_producto2/<int:id>')
 def borrar_productos_form(id):
     productoID = ReadOneProduct(id)
     title = 'Delete | Perfumería Borbocoders'
     return render_template("/backend/form_delete.html",title=title,producto=productoID)
 
 # paso 2 BORRAR
-@app.route("/eliminar_producto/<int:id>", methods=['POST'])
+@app.route("/eliminar_producto2/<int:id>", methods=['POST'])
 def borrar_productos_db(id):
     conexion = conectarMySQL()
     with conexion.cursor() as cursor:
@@ -111,4 +240,4 @@ def borrar_productos_db(id):
         result = cursor
     conexion.commit()
     conexion.close()
-    return redirect("/admin")
+    return redirect("/admin/")
