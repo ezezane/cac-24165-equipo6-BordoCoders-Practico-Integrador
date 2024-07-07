@@ -1,10 +1,9 @@
-from flask import Flask, render_template, request, redirect
-from db_crud import *
-
-# imports para upload de imagen
+# imports
 import os
 import time
-from flask import flash, url_for
+
+from flask import Flask, render_template, request, redirect, flash, url_for
+from db_crud import *
 # secure_filename permite realizar una limpieza en el nombre del archivo
 from werkzeug.utils import secure_filename
 
@@ -13,6 +12,7 @@ UPLOAD_FOLDER = 'static/img/uploads/'
 # extensiones aceptadas
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 
+# creación y configuración de app
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
@@ -131,30 +131,58 @@ def editar_productos_img_form(id):
 @app.route("/editar_producto_img", methods=['POST'])
 def editar_productos_img_db():
     if request.method == 'POST':
-        # check if the post request has the file part
-        if 'file' not in request.files:
-            #flash('no llegó ninguna imagen en el alta')
-            return redirect(request.referrer)
-        file = request.files['file']
-
-        # If the user does not select a file, the browser submits an
-        # empty file without a filename.
-        if file.filename == '':
-            #flash('No selected file')
-            return redirect(request.referrer)
+        if 'file' not in request.files or request.files['file'].filename == '':
+            file_uploaded = False
+        else:
+            file_uploaded = True
+            file = request.files['file']
+            if allowed_file(file.filename):
+                filename = filename_with_timestamp(file.filename)
+                file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+                prod_URLimg = filename
+            else:
+                return redirect(request.referrer)
         
-        # si los checkeos son válidos
-        if file and allowed_file(file.filename):
-            filename = filename_with_timestamp(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        prod_id = request.form['prod_id']
+        prod_marca = request.form['marca']
+        prod_name = request.form['name']
+        prod_precio = request.form['precio']
+        
+        if not file_uploaded:
+            UpdateDB(prod_marca, prod_name, prod_precio, prod_id)
+        else:
+            UpdateDBIMG(prod_marca, prod_name, prod_precio, prod_URLimg, prod_id)
+        
+        return redirect("/admin/")
+        
+        
+        
+        
+        
+        # file = request.files['file']
+        
+        # # si los checkeos son válidos
+        # if file and allowed_file(file.filename):
+        #     filename = filename_with_timestamp(file.filename)
+        #     file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
-            prod_id = request.form['prod_id']
-            prod_marca = request.form['marca']
-            prod_name = request.form['name']
-            prod_precio = request.form['precio']
-            prod_URLimg = filename
-            result = UpdateDB(prod_marca,prod_name,prod_precio,prod_URLimg,prod_id)
-            return redirect("/admin/")
+        #     prod_id = request.form['prod_id']
+        #     prod_marca = request.form['marca']
+        #     prod_name = request.form['name']
+        #     prod_precio = request.form['precio']
+        #     prod_URLimg = filename
+
+        #     if prod_URLimg == "":
+        #         # la imagen no se modifico
+        #         conexion = conectarMySQL()
+        #         with conexion.cursor() as cursor:
+        #             result = UpdateDB(prod_marca,prod_name,prod_precio,prod_id)
+        #         conexion.commit()
+        #         conexion.close()
+        #     else:
+        #         # la imagen se modificó
+        #         result = UpdateDBIMG(prod_marca,prod_name,prod_precio,prod_URLimg,prod_id)
+        #     return redirect("/admin/")
 
 
 

@@ -2,7 +2,6 @@ import pymysql
 from db_conection import *
 
 # función para hacer la llamada a la base y traer todos los productos
-# esto devuelve una tupla, la cual hay que recorrerla para mostrarla
 def ReadProductos():
     # conexion mysql
     conexion = conectarMySQL()
@@ -17,6 +16,7 @@ def ReadProductos():
         return productos
 
 
+# función para obtener todos los datos de un producto por ID
 def ReadOneProduct(id):
     conexion = conectarMySQL()
     prod = None
@@ -29,7 +29,6 @@ def ReadOneProduct(id):
 
 
 # función para crear nuevos registros en la base de datos
-# TODO: actualizar los valores por las variables
 def CreateDB(marca,nombre,precio,imagen):
     conexion = conectarMySQL()
     with conexion.cursor() as cursor:
@@ -39,9 +38,19 @@ def CreateDB(marca,nombre,precio,imagen):
         conexion.close()
 
 
-# función para actualizar un producto de la base en función del ID
-# TODO: actualizar los valores por las variables
-def UpdateDB(marca,nombre,precio,url,id):
+# función para actualizar un producto cuando no se actualiza la imagen
+def UpdateDB(marca,nombre,precio,id):
+    conexion = conectarMySQL()
+    with conexion.cursor() as cursor:
+        cursor.execute("UPDATE productos SET marca = %s, nombre = %s, precio = %s WHERE id = %s",(marca,nombre,precio,id))
+        result = cursor
+    conexion.commit()
+    conexion.close()
+    return result
+
+
+# función para actualizar un producto cuando se actualiza la imagen
+def UpdateDBIMG(marca,nombre,precio,url,id):
     conexion = conectarMySQL()
     with conexion.cursor() as cursor:
         cursor.execute("UPDATE productos SET marca = %s, nombre = %s, precio = %s, imagen = %s WHERE id = %s",(marca,nombre,precio,url,id))
@@ -51,13 +60,7 @@ def UpdateDB(marca,nombre,precio,url,id):
     return result
 
 
-
-
-
-
-
 # función para eliminar un producto de la base en función del ID
-# TODO: actualizar los valores por las variables
 def DeleteDB():
     # conexion mysql
     conexion = conectarMySQL()
