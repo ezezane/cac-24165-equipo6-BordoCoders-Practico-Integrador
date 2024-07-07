@@ -31,9 +31,20 @@
 				<h2 class="titulo mt-3">Nuevos lanzamientos</h2>
 			</div>
 
-			<!-- productos lanzamiento -->
+			<!-- productos -->
 			<div id="nuestros-productos-lanzamiento">
-				<div id="contenedor-productos-lanzamiento" class="mt-5"></div>
+				<div id="contenedor-productos-lanzamiento" class="mt-5">
+					{% for i in productosD %}
+						<div class="card-productos">
+							<article class="producto">
+								<img class="producto-img" src="/static/img/uploads/{{i[4]}}" alt="{{i[2]}}" style="max-width: 220px;">
+								<p class="producto-marca">{{i[1]}}</p>
+								<p class="producto-nombre">{{i[2]}}</p>
+								<p class="producto-precio">{{i[3]}}</p>
+							</article>
+						</div>
+            	{% endfor%}
+				</div>
 			</div>
 
 			<!-- carousel créditos-->

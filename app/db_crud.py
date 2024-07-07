@@ -9,11 +9,26 @@ def ReadProductos():
     with conexion.cursor() as cursor:
         # Consulta a la base
         sql = """SELECT * FROM productos ORDER BY id DESC"""
-        # consulta
+        # ejecución de consulta
         cursor.execute(sql)
         productos = cursor.fetchall()
         # return resultados
         return productos
+
+
+# función para hacer la llamada a la base y traer 4 productos
+def ProductosDestacados():
+    # conexion mysql
+    conexion = conectarMySQL()
+    productos = []
+    with conexion.cursor() as cursor:
+        # Consulta a la base
+        sql = "SELECT * FROM productos ORDER BY id DESC LIMIT 4"
+        # ejecución de consulta
+        cursor.execute(sql)
+        productosD = cursor.fetchall()
+        # return resultados
+        return productosD
 
 
 # función para obtener todos los datos de un producto por ID

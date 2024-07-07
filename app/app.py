@@ -1,11 +1,11 @@
-# imports
-import os
-import time
-
 from flask import Flask, render_template, request, redirect, flash, url_for
 from db_crud import *
 # secure_filename permite realizar una limpieza en el nombre del archivo
 from werkzeug.utils import secure_filename
+
+# imports
+import os
+import time
 
 # carpeta donde se guardarán los archivos cargados por el CRUD
 UPLOAD_FOLDER = 'static/img/uploads/'
@@ -35,9 +35,10 @@ def filename_with_timestamp(filename):
 
 # HOME
 @app.route("/")
-def hello_world():
+def cargar_home():
     title = 'Home | Perfumería Borbocoders'
-    return render_template("frontend/index.html",title=title)
+    productosD = ProductosDestacados()
+    return render_template("frontend/index.html",title=title,productosD=productosD)
 
 
 # SOBRE NOSOTROS
@@ -72,7 +73,6 @@ def cargar_productos():
 @app.route("/admin/")
 def cargar_productos_admin():
     title = 'CRUD | Perfumería Borbocoders'
-    #mensaje = mensaje
     productos = ReadProductos()
     return render_template("/backend/productos_db.html",title=title,productos=productos)
 
