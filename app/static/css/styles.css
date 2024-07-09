@@ -16,6 +16,12 @@ div {
 a {
   text-decoration: none;
 }
+.mt20{
+  margin-top: 20px;
+}
+.mt50{
+  margin-top: 50px;
+}
 
 /* -------------------- CAROUSEL TITULOS -------------------- */
 .carousel h2 {
@@ -113,7 +119,7 @@ footer .autor {
   font-size: 2.5em;
   font-weight: bold;
   text-align: center;
-  margin: 0 auto;
+  /*margin: 0 auto;*/
 }
 
 .titulo-b {
@@ -447,6 +453,7 @@ footer .autor {
 
 .container-nosotros {
   margin: 10px auto;
+  margin-top: 50px;
   width: 80%;
 }
 

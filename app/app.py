@@ -38,7 +38,7 @@ def filename_with_timestamp(filename):
 def cargar_home():
     title = 'Home | Perfumería Borbocoders'
     productosD = ProductosDestacados()
-    return render_template("frontend/index.html",title=title,productosD=productosD)
+    return render_template("frontend/index2.html",title=title,productosD=productosD)
 
 
 # SOBRE NOSOTROS
@@ -60,7 +60,7 @@ def cargar_contacto():
 def cargar_productos():
     title = 'Productos | Perfumería Borbocoders'
     productos = ReadProductos()
-    return render_template("frontend/productos_db.html",title=title,productos=productos)
+    return render_template("frontend/productos_db2.html",title=title,productos=productos)
 
 
 # --------------------
